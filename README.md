@@ -1,5 +1,5 @@
 # Rename HTML Template Handlebars Variables To Lowercase/Uppercase
-A console appllicatoin to modify first character of the variables in html handlebars from upper to lowercase and vice versa.
+A console appllicatoin to modify first character of the variables in html handlebars from upper to lowercase and vice versa written in C# .NET7
 
 A program to modify variables in html handlebars like this:
 {{ UPPER }} -> {{ upper }}
