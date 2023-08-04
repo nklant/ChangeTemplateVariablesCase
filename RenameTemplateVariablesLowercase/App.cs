@@ -13,6 +13,15 @@ public class App
         _config = config;
     }
 
+    /// <summary>
+    /// A program to modify variables in html handlebars like this:
+    /// {{ UPPER }} -> {{ upper }}
+    /// {{ CamelCase }} -> {{ camelCase }}
+    /// {{ Under_Line}} -> {{ under_Line }}
+    /// {{NOSPACE}} -> {{nospace}}
+    /// {{#if Variable }} -> {{#if variable }}
+    /// etc...
+    /// </summary>
     public void Run(string[] args)
     {
         // Should the fist letter be lowercase/uppercase?
