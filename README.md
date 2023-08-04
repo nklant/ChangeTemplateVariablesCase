@@ -8,3 +8,9 @@ A program to modify variables in html handlebars like this:
 {{NOSPACE}} -> {{nospace}}
 {{#if Variable }} -> {{#if variable }}
 etc...
+
+The application mode is controlled via appsettings.json
+
+Set the property "firstLetterLowercase": true/false
+
+Default value: true
