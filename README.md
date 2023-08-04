@@ -27,3 +27,8 @@ The modified html with "_modified" at the end of the original file name.
 
 <br /><br />
 <a href="https://www.buymeacoffee.com/5hwn5ffjzsl" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+<br /><br />
+<img src="https://media.npr.org/assets/img/2023/05/26/honest-work-meme-cb0f0fb2227fb84b77b3c9a851ac09b095ab74d8-s1100-c50.jpg" 
+     width="510" 
+     height="382" />
