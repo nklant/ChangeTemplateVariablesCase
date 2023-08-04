@@ -4,5 +4,5 @@ public interface IHelpers
 {
     string ProcessCase(string str);
     string ProcessCase(string[] parts);
-    string ProcessCase(char ch);
+    char ProcessCase(char ch);
 }
