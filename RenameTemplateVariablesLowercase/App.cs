@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using RenameTemplateVariablesLowercase.Helpers;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -7,10 +8,12 @@ namespace RenameTemplateVariablesLowercase;
 public class App
 {
     private readonly IConfiguration _config;
+    private readonly IHelpers _helpers;
 
-    public App(IConfiguration config)
+    public App(IConfiguration config, IHelpers helpers)
     {
         _config = config;
+        _helpers = helpers;
     }
 
     /// <summary>
@@ -24,12 +27,6 @@ public class App
     /// </summary>
     public void Run(string[] args)
     {
-        // Should the fist letter be lowercase/uppercase?
-        if (_config.GetValue<bool>("FirstLetterLowercase") == true)
-        {
-            /// TODO: Make .ToLower() / .ToUpper() extension method toggling between the two
-        }
-
         Console.WriteLine("Please enter a directory (or press Enter to use current):");
         string directoryPath = Console.ReadLine();
 
@@ -51,7 +48,6 @@ public class App
             Console.WriteLine($"Processing file: {filePath}");
             string htmlContent = File.ReadAllText(filePath, Encoding.Unicode);
 
-            // FUCKING REGEX SPACE ALIEN LANGUAGE I FUCKING HATE YOU!!!!!
             string pattern = @"(?<=\{{2}\#?\w*\s*)\w+\s*(?=\}{2})";
             var regex = new Regex(pattern);
 
@@ -66,17 +62,20 @@ public class App
                 // if uppercase
                 if (oldVariable == oldVariable.ToUpper())
                 {
+                    newVariable = _helpers.ProcessCase(oldVariable);
                     newVariable = oldVariable.ToLower();
                 }
                 // if has underscore
                 else if (oldVariable.Contains("_"))
                 {
                     var parts = oldVariable.Split('_');
+                    newVariable = _helpers.ProcessCase(parts);
                     newVariable = Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "_" + parts[1];
                 }
                 // if CamelCase
                 else
                 {
+                    newVariable = _helpers.ProcessCase(oldVariable[0]) + oldVariable.Substring(1);
                     newVariable = Char.ToLower(oldVariable[0]) + oldVariable.Substring(1);
                 }
 
@@ -95,7 +94,7 @@ public class App
             Console.WriteLine($"Modified file: {newFilePath}");
         }
 
-        Console.WriteLine("Press any key... Where is 'any key' ??? :D");
+        Console.WriteLine("Press any key...");
         Console.ReadKey();
     }
 }
