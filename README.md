@@ -1,4 +1,4 @@
-# RenameTemplateVariablesLowercase
+# Rename Template Variables To Lowercase/Uppercase
 A program to modify first character of the variables in html handlebars from upper to lowercase and vice versa.
 
 A program to modify variables in html handlebars like this:
