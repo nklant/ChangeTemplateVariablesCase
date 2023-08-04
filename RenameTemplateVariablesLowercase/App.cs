@@ -63,20 +63,17 @@ public class App
                 if (oldVariable == oldVariable.ToUpper())
                 {
                     newVariable = _helpers.ProcessCase(oldVariable);
-                    newVariable = oldVariable.ToLower();
                 }
                 // if has underscore
                 else if (oldVariable.Contains("_"))
                 {
                     var parts = oldVariable.Split('_');
                     newVariable = _helpers.ProcessCase(parts);
-                    newVariable = Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "_" + parts[1];
                 }
                 // if CamelCase
                 else
                 {
                     newVariable = _helpers.ProcessCase(oldVariable[0]) + oldVariable.Substring(1);
-                    newVariable = Char.ToLower(oldVariable[0]) + oldVariable.Substring(1);
                 }
 
                 // for visual debug and eye candy
