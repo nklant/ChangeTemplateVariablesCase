@@ -3,7 +3,6 @@ using ChangeTemplateVariablesCase.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RenameTemplateVariablesLowercase.Helpers;
 
 using IHost host = CreateHostBuilder(args).Build();
 using var scope = host.Services.CreateScope();

@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
+using ChangeTemplateVariablesCase.Helpers;
 using Microsoft.Extensions.Configuration;
-using RenameTemplateVariablesLowercase.Helpers;
 
 namespace ChangeTemplateVariablesCase;
 

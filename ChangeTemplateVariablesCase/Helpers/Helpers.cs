@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using RenameTemplateVariablesLowercase.Helpers;
 
 namespace ChangeTemplateVariablesCase.Helpers;
 

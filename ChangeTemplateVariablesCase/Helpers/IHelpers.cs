@@ -1,4 +1,4 @@
-﻿namespace RenameTemplateVariablesLowercase.Helpers;
+﻿namespace ChangeTemplateVariablesCase.Helpers;
 
 public interface IHelpers
 {
