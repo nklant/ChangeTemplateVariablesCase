@@ -11,6 +11,12 @@ var services = scope.ServiceProvider;
 
 try
 {
+    if (!File.Exists("appsettings.json"))
+    {
+        Console.WriteLine("appsettings.json doesn't exist! Using default settings.");
+        Console.WriteLine("You can create your own appsettings.json file to customize the settings with a \"firstLetterLowercase\" boolean value.");
+        GlobalConfig.AppsettingsFile = false;
+    }
     services.GetRequiredService<App>().Run(args);
 }
 catch (Exception ex)
@@ -22,7 +28,7 @@ static IHostBuilder CreateHostBuilder(string[] args)
 {
     var builder = new ConfigurationBuilder();
     builder.SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
     IConfiguration config = builder.Build();
 
