@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using RenameTemplateVariablesLowercase.Helpers;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.Configuration;
+using RenameTemplateVariablesLowercase.Helpers;
 
-namespace RenameTemplateVariablesLowercase;
+namespace ChangeTemplateVariablesCase;
 
 public class App
 {

@@ -1,4 +1,4 @@
-namespace RenameTemplateVariablesLowercase;
+namespace ChangeTemplateVariablesCase;
 
 public static class GlobalConfig
 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using RenameTemplateVariablesLowercase.Helpers;
 
-namespace RenameTemplateVariablesLowercase.Helpers;
+namespace ChangeTemplateVariablesCase.Helpers;
 
 public class Helpers : IHelpers
 {

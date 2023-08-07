@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ChangeTemplateVariablesCase;
+using ChangeTemplateVariablesCase.Helpers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RenameTemplateVariablesLowercase;
 using RenameTemplateVariablesLowercase.Helpers;
 
 using IHost host = CreateHostBuilder(args).Build();
