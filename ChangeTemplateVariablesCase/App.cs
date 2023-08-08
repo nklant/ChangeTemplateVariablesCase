@@ -23,6 +23,7 @@ public class App
     /// {{ Under_Line}} -> {{ under_Line }}
     /// {{NOSPACE}} -> {{nospace}}
     /// {{#if Variable }} -> {{#if variable }}
+    /// {{#*inline "Variable"}}
     /// etc...
     /// </summary>
     public void Run(string[] args)
