@@ -20,7 +20,8 @@ Input:
 
 Directory of the html
 
-/If none is given then the current dir is used/
+/If none is given then the current dir is used/ <br />
+/The app traverses all sub-directories/
 
 Output:
 
