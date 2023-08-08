@@ -111,7 +111,7 @@ public class App
         }
 
         // Some eye candy
-        string plural = htmlFiles.Length > 1 ? "s" : "";
+        string plural = (htmlFiles.Length > 1 || htmlFiles.Length == 0) ? "s" : "";
         Console.WriteLine(htmlFiles.Length + " file" + plural + " processed." + Environment.NewLine);
 
         Console.WriteLine("Press any key to exit...");
