@@ -48,7 +48,6 @@ public class App
             Console.WriteLine($"Processing file: {filePath}");
             string htmlContent = File.ReadAllText(filePath, Encoding.Unicode);
 
-            // Combined pattern to match both {{#*inline "variable"}} and {{ variable }}, etc...
             string pattern1 = @"(?<=\{{2}\#\*inline\s*"")\w+(?="")";
             string pattern2 = @"(?<=\{{2}\#?\w*\s*)\w+\s*(?=\}{2})";
             string combinedPattern = pattern1 + "|" + pattern2;
