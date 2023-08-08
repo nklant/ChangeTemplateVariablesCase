@@ -114,7 +114,7 @@ public class App
         string plural = htmlFiles.Length > 1 ? "s" : "";
         Console.WriteLine(htmlFiles.Length + " file" + plural + " processed." + Environment.NewLine);
 
-        Console.WriteLine("Press any key...");
+        Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
     }
 }
