@@ -29,11 +29,17 @@ public class App
     public void Run(string[] args)
     {
         Console.WriteLine("Please enter a directory (or press Enter to use current):");
-        string directoryPath = Console.ReadLine();
+        string? directoryPath = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(directoryPath))
         {
             directoryPath = Directory.GetCurrentDirectory();
+
+            if (string.IsNullOrWhiteSpace(directoryPath))
+            {
+                Console.WriteLine("Current directory is null!");
+                return;
+            }
         }
 
         if (!Directory.Exists(directoryPath))
@@ -49,7 +55,7 @@ public class App
             Console.WriteLine($"Processing file: {filePath}");
             string htmlContent = File.ReadAllText(filePath, Encoding.Unicode);
 
-            string pattern1 = @"(?<=\{{2}\#\*inline\s*"")\w+(?="")";
+            string pattern1 = @"(?<=\{{2}\#\*\w+\s*"")\w+(?="")";
             string pattern2 = @"(?<=\{{2}\#?\w*\s*)\w+\s*(?=\}{2})";
             string combinedPattern = pattern1 + "|" + pattern2;
 
@@ -85,9 +91,15 @@ public class App
                 return newVariable;
             });
 
-            string directory = Path.GetDirectoryName(filePath);
+            string? directory = Path.GetDirectoryName(filePath);
             string filename = Path.GetFileNameWithoutExtension(filePath);
             string extension = Path.GetExtension(filePath);
+
+            if (directory == null)
+            {
+                Console.WriteLine("Directory is null!");
+                return;
+            }
 
             string newFilePath = Path.Combine(directory, filename + "_modified" + extension);
 
