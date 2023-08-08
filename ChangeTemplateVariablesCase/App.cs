@@ -110,6 +110,10 @@ public class App
             Console.WriteLine($"Modified file: {newFilePath}");
         }
 
+        // Some eye candy
+        string plural = htmlFiles.Length > 1 ? "s" : "";
+        Console.WriteLine(htmlFiles.Length + " file" + plural + " processed.");
+
         Console.WriteLine("Press any key...");
         Console.ReadKey();
     }
