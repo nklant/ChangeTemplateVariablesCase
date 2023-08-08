@@ -17,7 +17,7 @@ try
         Console.WriteLine("You can create your own appsettings.json file to customize the settings with");
         Console.WriteLine("Example:");
         Console.WriteLine("\"firstLetterLowercase\" boolean value. (Should the app convert variables to start with uppercase)");
-        Console.WriteLine("\"traverseSubDirs\" boolean value. (Should the app traverse sub-directories)");
+        Console.WriteLine("\"traverseSubDirs\" boolean value. (Should the app traverse sub-directories)" + Environment.NewLine);
         GlobalConfig.AppsettingsFile = false;
     }
     services.GetRequiredService<App>().Run(args);

@@ -107,12 +107,12 @@ public class App
             string newFilePath = Path.Combine(directory, filename + "_modified" + extension);
 
             File.WriteAllText(newFilePath, newHtmlContent, Encoding.Unicode);
-            Console.WriteLine($"Modified file: {newFilePath}");
+            Console.WriteLine($"Modified file: {newFilePath}" + Environment.NewLine);
         }
 
         // Some eye candy
         string plural = htmlFiles.Length > 1 ? "s" : "";
-        Console.WriteLine(htmlFiles.Length + " file" + plural + " processed.");
+        Console.WriteLine(htmlFiles.Length + " file" + plural + " processed." + Environment.NewLine);
 
         Console.WriteLine("Press any key...");
         Console.ReadKey();
