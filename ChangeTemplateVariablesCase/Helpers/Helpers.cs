@@ -51,7 +51,7 @@ public class Helpers : IHelpers
         {
             return Char.ToLower(ch);
         }
-        else if (_config.GetValue<bool>("firstLetterLowercase") == false && File.Exists("appsettings.json"))
+        else if (_config.GetValue<bool>("firstLetterLowercase") == false && GlobalConfig.AppsettingsFile)
         {
             return Char.ToUpper(ch);
         }
