@@ -12,7 +12,7 @@ etc...<br />
 
 The application mode (Lowercase/Uppercase) is controlled via appsettings.json
 
-Set the property "firstLetterLowercase": true/false
+Set the property <i>"firstLetterLowercase": true/false</i>
 
 Default value: true
 
@@ -20,8 +20,9 @@ Input:
 
 Directory of the html
 
-/If none is given then the current dir is used/ <br />
-/The app traverses all sub-directories/
+/If none is given then the current dir is used/
+
+The app traverses all sub-directories if <i>"traverseSubDirs": true</i> in appsettings.json. Default is false!
 
 Output:
 
