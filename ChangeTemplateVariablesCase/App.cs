@@ -107,7 +107,7 @@ public class App
             string newFilePath = Path.Combine(directory, filename + "_modified" + extension);
 
             File.WriteAllText(newFilePath, newHtmlContent, Encoding.Unicode);
-            Console.WriteLine($"Modified file: {newFilePath}" + Environment.NewLine);
+            Console.WriteLine(Environment.NewLine + $"Modified file: {newFilePath}" + Environment.NewLine);
         }
 
         // Some eye candy
