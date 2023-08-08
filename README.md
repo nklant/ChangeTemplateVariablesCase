@@ -7,6 +7,7 @@ Examples:
 {{ Under_Line}} -> {{ under_Line }}
 {{NOSPACE}} -> {{nospace}}
 {{#if Variable }} -> {{#if variable }}
+{{#*inline "Variable"}} -> {{#*inline "variable"}}
 etc...
 
 The application mode (Lowercase/Uppercase) is controlled via appsettings.json
