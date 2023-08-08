@@ -49,7 +49,9 @@ public class App
             return;
         }
 
-        string[] htmlFiles = Directory.GetFiles(directoryPath, "*.html", SearchOption.AllDirectories);
+        string[] htmlFiles = GlobalConfig.AppsettingsFile && _config.GetValue<bool>("traverseSubDirs") ? 
+                             Directory.GetFiles(directoryPath, "*.html", SearchOption.AllDirectories) : 
+                             Directory.GetFiles(directoryPath, "*.html");
 
         foreach (string filePath in htmlFiles)
         {

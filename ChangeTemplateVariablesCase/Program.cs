@@ -13,8 +13,11 @@ try
 {
     if (!File.Exists("appsettings.json"))
     {
-        Console.WriteLine("appsettings.json doesn't exist! Using default settings.");
-        Console.WriteLine("You can create your own appsettings.json file to customize the settings with a \"firstLetterLowercase\" boolean value.");
+        Console.WriteLine("appsettings.json doesn't exist! App is using default settings.");
+        Console.WriteLine("You can create your own appsettings.json file to customize the settings with");
+        Console.WriteLine("Example:");
+        Console.WriteLine("\"firstLetterLowercase\" boolean value. (Should the app convert variables to start with uppercase)");
+        Console.WriteLine("\"traverseSubDirs\" boolean value. (Should the app traverse sub-directories)");
         GlobalConfig.AppsettingsFile = false;
     }
     services.GetRequiredService<App>().Run(args);
