@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ChangeTemplateVariablesCase;
 
+
 public class App
 {
     private readonly IConfiguration _config;
@@ -48,7 +49,7 @@ public class App
             return;
         }
 
-        string[] htmlFiles = Directory.GetFiles(directoryPath, "*.html");
+        string[] htmlFiles = Directory.GetFiles(directoryPath, "*.html", SearchOption.AllDirectories);
 
         foreach (string filePath in htmlFiles)
         {
