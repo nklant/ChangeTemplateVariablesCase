@@ -60,7 +60,8 @@ public class App
 
             string pattern1 = @"(?<=\{{2}\#\*\w+\s*"")\w+(?="")";
             string pattern2 = @"(?<=\{{2}\#?\w*\s*)\w+\s*(?=\}{2})";
-            string combinedPattern = pattern1 + "|" + pattern2;
+            string pattern3 = @"(?<=\{\{>\s*)\w+(?=\}\})";
+            string combinedPattern = pattern1 + "|" + pattern2 + "|" + pattern3;
 
             var regex = new Regex(combinedPattern);
 
