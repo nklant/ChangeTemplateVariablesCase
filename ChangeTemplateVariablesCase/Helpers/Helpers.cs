@@ -47,7 +47,7 @@ public class Helpers : IHelpers
             {
                 if (IsAllUppercase(parts[i]))
                 {
-                    result.Append(parts[i].ToLower());
+                    result.Append(parts[i]);
                 }
                 else
                 {
@@ -58,7 +58,7 @@ public class Helpers : IHelpers
             {
                 if (IsAllUppercase(parts[i]))
                 {
-                    result.Append(parts[i].ToUpper());
+                    result.Append(parts[i]);
                 }
                 else
                 {
