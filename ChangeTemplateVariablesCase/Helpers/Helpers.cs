@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Text;
 
 namespace ChangeTemplateVariablesCase.Helpers;
 
@@ -30,36 +31,65 @@ public class Helpers : IHelpers
 
     public string ProcessCase(string[] parts)
     {
-        if (_config.GetValue<bool>("firstLetterLowercase"))
+        StringBuilder result = new StringBuilder();
+
+        bool firstLetterLowercase = _config.GetValue<bool>("firstLetterLowercase");
+
+        for (int i = 0; i < parts.Length; i++)
         {
-            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "_" + parts[1];
+            if (firstLetterLowercase || !GlobalConfig.AppsettingsFile)
+            {
+                result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
+            }
+            else
+            {
+                result.Append(Char.ToUpper(parts[i][0]) + parts[i].Substring(1));
+            }
+
+            if (i < parts.Length - 1)
+            {
+                result.Append('_');
+            }
         }
-        else if (_config.GetValue<bool>("firstLetterLowercase") == false && GlobalConfig.AppsettingsFile)
-        {
-            return Char.ToUpper(parts[0][0]) + parts[0].Substring(1) + "_" + parts[1];
-        }
-        else
-        {
-            // If appsettings.json doesn't exist, then default to lowercase
-            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "_" + parts[1];
-        }
+
+        return result.ToString();
     }
 
     public string ProcessCaseDot(string[] parts)
     {
-        if (_config.GetValue<bool>("firstLetterLowercase"))
+        StringBuilder result = new StringBuilder();
+
+        bool firstLetterLowercase = _config.GetValue<bool>("firstLetterLowercase");
+
+        for (int i = 0; i < parts.Length; i++)
         {
-            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToLower(parts[1][0]) + parts[1].Substring(1);
+            // Only change the first letter of the part before the underscore
+            if (firstLetterLowercase || !GlobalConfig.AppsettingsFile)
+            {
+                int underscoreIndex = parts[i].IndexOf('_');
+                if (underscoreIndex == -1)
+                {
+                    // If there's no underscore, process the whole part
+                    result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
+                }
+                else
+                {
+                    // Process only up to the underscore, then append the rest unchanged
+                    result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1, underscoreIndex) + parts[i].Substring(underscoreIndex));
+                }
+            }
+            else
+            {
+                result.Append(Char.ToUpper(parts[i][0]) + parts[i].Substring(1));
+            }
+
+            if (i < parts.Length - 1)
+            {
+                result.Append('.');
+            }
         }
-        else if (_config.GetValue<bool>("firstLetterLowercase") == false && GlobalConfig.AppsettingsFile)
-        {
-            return Char.ToUpper(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToUpper(parts[1][0]) + parts[1].Substring(1);
-        }
-        else
-        {
-            // If appsettings.json doesn't exist, then default to lowercase
-            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToLower(parts[1][0]) + parts[1].Substring(1);
-        }
+
+        return result.ToString();
     }
 
     public char ProcessCase(char ch)
