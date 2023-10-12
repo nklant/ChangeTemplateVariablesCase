@@ -45,6 +45,23 @@ public class Helpers : IHelpers
         }
     }
 
+    public string ProcessCaseDot(string[] parts)
+    {
+        if (_config.GetValue<bool>("firstLetterLowercase"))
+        {
+            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToLower(parts[1][0]) + parts[1].Substring(1);
+        }
+        else if (_config.GetValue<bool>("firstLetterLowercase") == false && GlobalConfig.AppsettingsFile)
+        {
+            return Char.ToUpper(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToUpper(parts[1][0]) + parts[1].Substring(1);
+        }
+        else
+        {
+            // If appsettings.json doesn't exist, then default to lowercase
+            return Char.ToLower(parts[0][0]) + parts[0].Substring(1) + "." + Char.ToLower(parts[1][0]) + parts[1].Substring(1);
+        }
+    }
+
     public char ProcessCase(char ch)
     {
         if (_config.GetValue<bool>("firstLetterLowercase"))

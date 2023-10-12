@@ -56,10 +56,23 @@ public class App
         foreach (string filePath in htmlFiles)
         {
             Console.WriteLine($"Processing file: {filePath}");
-            string htmlContent = File.ReadAllText(filePath, Encoding.Unicode);
+
+            int codepage = Encoding.UTF8.CodePage;
+            Encoding encoding = Encoding.GetEncoding(codepage); // Determine encoding
+            string htmlContent;
+
+            try
+            {
+                htmlContent = File.ReadAllText(filePath, encoding);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while trying to read {filePath}: {ex.Message}");
+                return;
+            }
 
             string pattern1 = @"(?<=\{{2}\#\*\w+\s*"")\w+(?="")";
-            string pattern2 = @"(?<=\{{2}\#?\w*\s*)\w+\s*(?=\}{2})";
+            string pattern2 = @"(?<=\{{2}\#?[\w\.]*\s*)[\w\.]+\s*(?=\}{2})";
             string pattern3 = @"(?<=\{\{>\s*)\w+(?=\}\})";
             string combinedPattern = pattern1 + "|" + pattern2 + "|" + pattern3;
 
@@ -79,10 +92,16 @@ public class App
                     newVariable = _helpers.ProcessCase(oldVariable);
                 }
                 // if has underscore
-                else if (oldVariable.Contains("_"))
+                else if (oldVariable.Contains('_'))
                 {
                     var parts = oldVariable.Split('_');
                     newVariable = _helpers.ProcessCase(parts);
+                }
+                // if has dot
+                else if (oldVariable.Contains('.'))
+                {
+                    var parts = oldVariable.Split('.');
+                    newVariable = _helpers.ProcessCaseDot(parts);
                 }
                 // if CamelCase
                 else
