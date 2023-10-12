@@ -12,6 +12,12 @@ public class Helpers : IHelpers
         _config = config;
     }
 
+    // Helper method to check if a string is all uppercase
+    private bool IsAllUppercase(string str)
+    {
+        return str.All(char.IsUpper);
+    }
+
     public string ProcessCase(string str)
     {
         if (_config.GetValue<bool>("firstLetterLowercase"))
@@ -39,11 +45,25 @@ public class Helpers : IHelpers
         {
             if (firstLetterLowercase || !GlobalConfig.AppsettingsFile)
             {
-                result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
+                if (IsAllUppercase(parts[i]))
+                {
+                    result.Append(parts[i].ToLower());
+                }
+                else
+                {
+                    result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
+                }
             }
             else
             {
-                result.Append(Char.ToUpper(parts[i][0]) + parts[i].Substring(1));
+                if (IsAllUppercase(parts[i]))
+                {
+                    result.Append(parts[i].ToUpper());
+                }
+                else
+                {
+                    result.Append(Char.ToUpper(parts[i][0]) + parts[i].Substring(1));
+                }
             }
 
             if (i < parts.Length - 1)
@@ -63,20 +83,9 @@ public class Helpers : IHelpers
 
         for (int i = 0; i < parts.Length; i++)
         {
-            // Only change the first letter of the part before the underscore
             if (firstLetterLowercase || !GlobalConfig.AppsettingsFile)
             {
-                int underscoreIndex = parts[i].IndexOf('_');
-                if (underscoreIndex == -1)
-                {
-                    // If there's no underscore, process the whole part
-                    result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
-                }
-                else
-                {
-                    // Process only up to the underscore, then append the rest unchanged
-                    result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1, underscoreIndex) + parts[i].Substring(underscoreIndex));
-                }
+                result.Append(Char.ToLower(parts[i][0]) + parts[i].Substring(1));
             }
             else
             {

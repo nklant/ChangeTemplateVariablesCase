@@ -92,13 +92,13 @@ public class App
                     newVariable = _helpers.ProcessCase(oldVariable);
                 }
                 // if has underscore
-                else if (oldVariable.Contains('_'))
+                else if (oldVariable.Contains('_') && !oldVariable.Contains('.'))
                 {
                     var parts = oldVariable.Split('_');
                     newVariable = _helpers.ProcessCase(parts);
                 }
                 // if has dot
-                else if (oldVariable.Contains('.'))
+                else if (oldVariable.Contains('.') || (oldVariable.Contains('.') && oldVariable.Contains('_')))
                 {
                     var parts = oldVariable.Split('.');
                     newVariable = _helpers.ProcessCaseDot(parts);
