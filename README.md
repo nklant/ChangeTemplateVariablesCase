@@ -1,5 +1,5 @@
 # Change HTML Template Handlebars Variables To Lowercase/Uppercase
-A use-case specific console appllication to modify the case of the variables in html handlebars, starting with upper to lowercase and vice versa written in C# .NET 8
+A use-case specific console appllication to modify the case of the variables in html handlebars, starting with upper to lowercase and vice versa written in C# .NET 9
 
 Examples: <br />
 {{ UPPER }} -> {{ upper }}<br />
